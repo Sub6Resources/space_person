@@ -15,12 +15,4 @@ class NumberInSpace {
       );
     }
 
-    Map<String, dynamic> toJson() {
-      return {
-        'message': message,
-        'number': number,
-        'people': people.map((person) => person.toJson()),
-      };
-    }
-
 }

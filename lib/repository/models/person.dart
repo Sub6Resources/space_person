@@ -10,11 +10,4 @@ class Person {
       name: json['name'],
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'craft': craft,
-      'name': name,
-    };
-  }
 }
