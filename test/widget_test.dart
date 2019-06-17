@@ -13,14 +13,13 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
     // Verify that our counter starts at 0.
 
-    await tester.pump(Duration(seconds: 2));
-
+    await tester.pump(Duration(seconds: 5));
 
     expect(find.byType(Text), findsOneWidget);
-  });
+    expect(find.byType(ListTile), findsWidgets);
 
-  testWidgets("Test the person detail page", (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(home: PersonDetailPage("Scott Kelly", "iss")));
-    expect(find.byType(CircularProgressIndicator), findsNWidgets(2));
+    await tester.tap(find.byType(ListTile));
+
+    expect(find.byType(PersonDetailPage), findsOneWidget);
   });
 }
