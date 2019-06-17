@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:space_person/pages/person_detail_page.dart';
 import 'package:space_person/shared_state/number_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,8 +53,16 @@ class _HomePageState extends State<HomePage> {
                       itemCount: state.numberInSpace,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(state.peopleInSpace[index].name),
-                          subtitle: Text(state.peopleInSpace[index].craft),
+                          title: Hero(child: Material(child: Text(state.peopleInSpace[index].name)), tag: 'name${state.peopleInSpace[index].name}'),
+                          subtitle: Hero(child: Material(child: Text(state.peopleInSpace[index].craft)), tag: 'craft${state.peopleInSpace[index].name}'),
+                          onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) => PersonDetailPage(
+                                        state.peopleInSpace[index].name,
+                                        state.peopleInSpace[index].craft,
+                                      ),
+                                ),
+                              ),
                         );
                       },
                     ),

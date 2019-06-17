@@ -18,7 +18,6 @@ class NumberInSpaceBloc extends Bloc<NumberInSpaceEvent, NumberInSpaceState> {
         peopleInSpace: numberInSpace.people,
       );
     } on DioError catch(error) {
-      print("Error");
       yield NumberInSpaceState(errorLoading: error.message);
     }
   }

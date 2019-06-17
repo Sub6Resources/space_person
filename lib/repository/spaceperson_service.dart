@@ -10,7 +10,7 @@ class SpacePersonService {
       NumberInSpace numberInSpace = NumberInSpace.fromJson(response.data);
       return numberInSpace;
     } on dio.DioError catch(error) {
-      print("${error.response.statusCode} ${error.response}");
+      print("${error.response?.statusCode} ${error.response}");
       throw error;
     }
   }
