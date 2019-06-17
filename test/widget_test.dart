@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:space_person/main.dart';
+import 'package:space_person/pages/person_detail_page.dart';
 
 
 void main() {
@@ -15,5 +17,10 @@ void main() {
 
 
     expect(find.byType(Text), findsOneWidget);
+  });
+
+  testWidgets("Test the person detail page", (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: PersonDetailPage("Scott Kelly", "iss")));
+    expect(find.byType(CircularProgressIndicator), findsNWidgets(2));
   });
 }
