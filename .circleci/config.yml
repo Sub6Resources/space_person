@@ -5,4 +5,4 @@ jobs:
       - image: cirrusci/flutter
     steps:
       - checkout
-      - run: flutter test
+      - run: flutter test --coverage
