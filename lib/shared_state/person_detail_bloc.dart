@@ -11,7 +11,7 @@ class PersonDetailBloc extends Bloc<PersonDetailEvent, PersonDetailState> {
    Stream<PersonDetailState> mapEventToState(event) async* {
      yield initialState;
 
-     yield PersonDetailState(personDetails: await spacePersonDetailService.getPersonDetails(event.name));
+     yield PersonDetailState(personDetails: await spacePersonDetailRepository.getPersonDetails(event.name));
    }
 
 }

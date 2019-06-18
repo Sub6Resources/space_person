@@ -3,7 +3,8 @@ import 'package:space_person/repository/models/number.dart';
 
 const serviceBaseURL = "http://api.open-notify.org";
 
-class SpacePersonService {
+
+class SpacePersonService implements SpacePersonRepository {
   Future<NumberInSpace> getNumberOfPeople() async {
     try {
       dio.Response response = await _getDio().get("$serviceBaseURL/astros.json");
@@ -20,4 +21,8 @@ class SpacePersonService {
   }
 }
 
-final spacePersonService = SpacePersonService();
+abstract class SpacePersonRepository {
+  Future<NumberInSpace> getNumberOfPeople();
+}
+
+SpacePersonRepository spacePersonRepository = SpacePersonService();

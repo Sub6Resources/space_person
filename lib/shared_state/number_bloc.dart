@@ -11,7 +11,7 @@ class NumberInSpaceBloc extends Bloc<NumberInSpaceEvent, NumberInSpaceState> {
   @override
   Stream<NumberInSpaceState> mapEventToState(event) async* {
     try {
-      NumberInSpace numberInSpace = await spacePersonService
+      NumberInSpace numberInSpace = await spacePersonRepository
           .getNumberOfPeople();
       yield NumberInSpaceState(
         numberInSpace: numberInSpace.number,

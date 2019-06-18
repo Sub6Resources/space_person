@@ -3,7 +3,7 @@ import 'package:space_person/repository/models/person_details.dart';
 
 const serviceBaseURL = "https://en.wikipedia.org/w/api.php?action=query&generator=search&prop=pageimages|extracts&&gsrlimit=1&exlimit=1&pithumbsize=100&format=json&gsrsearch=";
 
-class SpacePersonDetailService {
+class SpacePersonDetailService implements SpacePersonDetailRepository {
 
   Future<PersonDetails> getPersonDetails(String name) async {
     try {
@@ -20,4 +20,8 @@ class SpacePersonDetailService {
   }
 }
 
-final spacePersonDetailService = SpacePersonDetailService();
+abstract class SpacePersonDetailRepository {
+  Future<PersonDetails> getPersonDetails(String name);
+}
+
+SpacePersonDetailRepository spacePersonDetailRepository = SpacePersonDetailService();

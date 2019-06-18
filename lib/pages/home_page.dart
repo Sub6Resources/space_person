@@ -10,12 +10,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  NumberInSpaceBloc spaceBloc;
+
+  @override
+  void didChangeDependencies() {
+    spaceBloc = Provider.of<NumberInSpaceBloc>(context);
+    spaceBloc.dispatch(NumberInSpaceEvent());
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    spaceBloc.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    NumberInSpaceBloc spaceBloc = Provider.of<NumberInSpaceBloc>(context);
-
-    spaceBloc.dispatch(NumberInSpaceEvent());
-
     return Scaffold(
       body: Center(
         child: BlocBuilder(
